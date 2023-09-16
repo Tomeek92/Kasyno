@@ -39,17 +39,29 @@ class Guy
 {
 
 
-    public int cash;
+    public double cash;
     public string Name;
 
 
-
+    public void CashZero()
+    {
+        if ( cash == 0)
+        {
+            Console.WriteLine("Masz zero na koncie nie możesz grać");
+            Console.WriteLine("Nigdy nie wygrasz z kasynem , wduś Q aby wyjść");
+            char keyChar = Console.ReadKey(true).KeyChar;
+            if((keyChar == 'q'||keyChar=='Q')) return;
+            
+        }
+    }
     public void WriteMyInfo()
     {
         Console.WriteLine(Name + " " + "Ma" + " " + cash + " " + " zł");
     }
-    public int GiveCash(int amount)
+    public int GiveCash(double amount)
     {
+
+       
         if (amount <= 0)
         {
             Console.WriteLine("Kwota jest nieprawidłowa");
@@ -60,8 +72,11 @@ class Guy
             Console.WriteLine("Masz niewstarczająca ilość środków na koncie");
             return 0;
         }
+        
+
         cash -= amount;
-        return amount;
+        return (int)amount;
+
     }
 
     public void ReceiveCash(int amount)
